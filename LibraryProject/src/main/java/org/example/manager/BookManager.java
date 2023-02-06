@@ -29,7 +29,9 @@ public class BookManager {
             // some people get nervous with this
             // be careful ...
             String bookId = InterfaceUtils.createUUID();
-            newbook.setISBN(bookId);
+            // Faker already has a method for creating fake ISBN values
+            String bookISBN = faker.code().isbn13();
+            newbook.setISBN(bookISBN);
 
             String bookTitle = faker.book().title();
             newbook.setTitle(bookTitle);
@@ -43,7 +45,7 @@ public class BookManager {
             Author newauthor = new Author();
             newbook.setAuthor(newauthor);
 
-            books.put( bookId, newbook);
+            books.put(bookId, newbook);
             newbook = null;
         }
     }
